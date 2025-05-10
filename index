@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="" type="image/png">
+  <meta charset="utf-8" />
+  <title>Your Safe Space</title>
+  <title>Selah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    * {
+      margin: 0;
+      box-sizing: border-box;
+      font-family:"Rethink Sans", sans-serif;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: radial-gradient(circle at 30% 30%, #1e1b4b, #0f172a, #000);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      margin: 0;
+  padding: 0;
+    }
+    .container {
+      flex: 1;
+      width: 100%;
+  margin:0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+  
+    .chat-box {
+      flex-grow: 1;
+      background: transparent;
+      padding: 16px;
+      overflow-y: auto;
+      padding-bottom: 100px;
+      
+    }
+    .message {
+      display: flex;
+      margin-bottom: 20px;  
+    }
+    .message.user {
+      justify-content: flex-end;
+      color: white;
+    }
+    .message.bot {
+      justify-content: flex-start;
+    }
+    .bubble {
+      max-width: 75%;
+      padding: 14px 18px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      word-break: break-word;
+
+    }
+    .user .bubble {
+      background-color: white;
+      background: #3c3a55;
+      border-bottom-right-radius: 4px;
+    }
+    .bot .bubble {
+      background: #f1f1f1;
+      color: #111;
+      border-bottom-left-radius: 4px;
+    }
+    
+    .chat-input-area {
+      position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+      padding: 16px;
+      border-top: 1px solid #ccc;
+      border-radius: 30px;
+      background: #ccc;
+      justify-content: center;
+      width: 100%;
+      
+    }
+    .chat-input-wrapper {
+  display: flex;
+  color:black;
+  background-color: #ccc;
+  border-radius: 999px;
+  padding: 5px;
+  width: 100%;
+  max-width: 600px;
+    }
+    
+    .chat-input-area textarea{
+       height: 60px;               /* fixed height */
+  max-height: 120px;
+      flex: 1;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+  outline: none;
+  background: transparent;
+  overflow-y: auto; /* enables vertical scrollbar when needed */
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+    }
+
+    .chat-input-area button {
+      margin-left: 10px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      background-color: #302e53;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .chat-input-area button:hover {
+      opacity: 0.9;
+      background-color: #47456d;
+    }
+    body {
+      transition: opacity 1s ease-in-out;
+    }
+
+    body.fade-out {
+      opacity: 0;
+    }
+    .back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  z-index: 1000;
+}
+
+.back-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+#chatBox {
+  max-height: 80vh; /* or a suitable value */
+  overflow-y: auto;
+  scroll-behavior: smooth; /* for smooth scrolling */
+}
+#chatBox::-webkit-scrollbar {
+  width: 6px;
+}
+#chatBox::-webkit-scrollbar-thumb {
+  background: #888; /* Scroll thumb */
+  border-radius: 4px;
+}
+
+#chatBox::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker on hover */
+}
+#chatInput {
+  max-height: 80vh; /* or a suitable value */
+  overflow-y: auto;
+  scroll-behavior: smooth; /* for smooth scrolling */
+}
+#chatInput::-webkit-scrollbar {
+  width: 6px;
+}
+#chatInput::-webkit-scrollbar-thumb {
+  background: #888; /* Scroll thumb */
+  border-radius: 4px;
+}
+
+#chatInput::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker on hover */
+}
+  </style>
+</head>
+<a href="homepage" class="back-arrow" title="Back to Home">←</a>
+<body style="opacity: 0;" onload="document.body.style.opacity='1'">
+  <div class="container">
+    <div id="chatContainer">
+      <div class="chat-box" id="chatBox">
+        <div class="message bot">
+          <div class="bubble">
+            I'm your safe space-🌿Selah. Feel free to talk to me anytime.
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <div class="chat-input-wrapper">
+          <textarea id="chatInput" rows="2" placeholder="Enter a message..."></textarea>
+          <button id="sendBtn">Send</button>
+          <button id="startSpeechBtn">🎙️</button>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const chatInput = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const startSpeechBtn = document.getElementById("startSpeechBtn");
+    const inputInitHeight = chatInput.scrollHeight;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+// 🌐 Gemini API Config
+const API_KEY = "AIzaSyD6JTmydmOJm-M3NwxuO3n8WZ6ZuCr5ng0";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+// 🧠 ElevenLabs API Config
+const ELEVENLABS_API_KEY = "sk_43d4d61bf87f946b356771e9c2806dfa52c2c3ae9363553a";
+const ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM";  
+   chatInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();  // prevent new line
+    handleSend();        // trigger send
+  }
+  // else: allow shift+enter to work normally
+});
+
+
+    let isBotResponding = false;
+    let recognizing = false;
+    let silenceTimeout;
+    let canStart = true;
+    let messageHistory = [];
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.maxAlternatives = 1;
+    recognition.interimResults = true;
+
+    function handleSend() {
+      if (isBotResponding) return;
+      const userText = chatInput.value.trim();
+      if (!userText) return;
+      createMessage(userText, "user");
+      chatInput.value = "";
+      messageHistory.push({ role: "user", content: userText });
+      isBotResponding = true;
+      generateBotReply(userText);
+    }
+
+    function createMessage(content, type) {
+      const msg = document.createElement("div");
+      msg.className = `message ${type}`;
+      msg.innerHTML = `<div class="bubble">${content.replace(/\n/g, "<br>")}</div>`;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function generateBotReply(userText) {
+  createMessage("...", "bot");
+
+  // Build the conversation history for Gemini
+  const history = [
+    {
+      role: "user",
+      parts: [{
+        text: `You are an emotionally intelligent , and deeply empathetic mental health chatbot. Always respond like a supportive friend: warm, non-judgmental, casual, and validating.Use scripture only when it directly helps or brings comfort, and focus on providing practical, positive, and Christ-centered advice. Prioritize understanding the user's feelings first. Use appropriate emojis where it feels natural. If anyone asks who created you say Sneha Dindi.`
+      }]
+    },
+    ...messageHistory.map(m => ({
+      role: m.role === "bot" ? "model" : m.role,
+      parts: [{ text: m.content }]
+    }))
+  ];
+
+  const body = { contents: history };
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm here for you 💖";
+
+    chatBox.removeChild(chatBox.lastChild); // Remove "..." bubble
+    createMessage(reply, "bot");
+
+    // Add bot reply to message history
+    messageHistory.push({ role: "bot", content: reply });
+
+    // Speak it
+    speakWithElevenLabs(reply);
+  } catch (err) {
+    chatBox.removeChild(chatBox.lastChild);
+    createMessage("Sorry, something went wrong.", "bot");
+    console.error(err);
+  } finally {
+    isBotResponding = false;
+  }
+}
+    sendBtn.addEventListener("click", handleSend);
+
+    // ElevenLabs TTS
+    async function speakWithElevenLabs(text) {
+      const cleanedText = removeEmojis(text);
+      const url = `https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`;
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Accept": "audio/mpeg",
+            "Content-Type": "application/json",
+            "xi-api-key": ELEVENLABS_API_KEY
+          },
+          body: JSON.stringify({
+            text: cleanedText,
+            model_id: "eleven_monolingual_v1",
+            voice_settings: { stability: 0.3, similarity_boost: 0.85 }
+          })
+        });
+        const audioBlob = await res.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        const audio = new Audio(audioUrl);
+        audio.play();
+      } catch (err) {
+        console.error("TTS Error:", err);
+      }
+    }
+
+    function removeEmojis(text) {
+      return text.replace(/[\p{Emoji}\p{Punctuation}]/gu, '');
+    }
+
+    // Voice recognition
+    recognition.addEventListener("result", (event) => {
+      clearTimeout(silenceTimeout);
+       let transcript = "";
+
+  for (let i = event.resultIndex; i < event.results.length; i++) {
+    transcript += event.results[i][0].transcript;
+    }
+  
+    chatInput.value = transcript;
+      silenceTimeout = setTimeout(() => {
+        recognition.stop();
+      }, 3000);
+    });
+
+    recognition.addEventListener("start", () => {
+  recognizing = true;
+  startSpeechBtn.textContent = "🔴 Listening...";
+  console.log("Speech recognition started");
+});
+
+recognition.addEventListener("end", () => {
+  recognizing = false;
+  startSpeechBtn.textContent = "🎙️";
+  clearTimeout(silenceTimeout);
+  console.log("Speech recognition ended");
+});
+recognition.addEventListener("error", (event) => {
+  console.error("Speech Recognition Error:", event.error);
+  alert("Speech recognition failed. Check mic access and browser compatibility.");
+  recognizing = false;
+  startSpeechBtn.textContent = "🎙️";
+});
+
+startSpeechBtn.addEventListener("click", () => {
+  if (recognizing) {
+    recognition.stop();
+    return;
+  }
+  if (!canStart) return;
+
+  canStart = false;
+  setTimeout(() => (canStart = true), 1000); // Prevent rapid double starts
+
+  try {
+    recognition.start();
+  } catch (error) {
+    console.warn("Recognition already started or failed:", error.message);
+  }
+});
+chatInput.addEventListener("input", () => {
+  chatInput.style.height = "auto"; // Reset
+  
+});
+    window.addEventListener("DOMContentLoaded", () => {
+      const welcome = document.createElement("div");
+      welcome.className = "message bot";
+      chatBox.appendChild(welcome);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(() => console.log("Microphone permission granted"))
+    .catch(err => console.error("Microphone permission denied:", err));
+    });
+</script>
+</body>
+</html>
