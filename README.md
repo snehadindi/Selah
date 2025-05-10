@@ -31,7 +31,7 @@ Selah/
 ├── index.html     # Home page
 ├── chatbot.html   # Core chatbot logic
 ├── about.html     # About page
-├── favicon.ico    #Tab logo
+├── favicon.ico    # Tab logo
 └── README.md      # Project description
 ```
 ---
@@ -51,7 +51,7 @@ Selah/
 - Enable GitHub Pages in the repository settings.
 - Set source to `main` branch and root folder.
 - Access your chatbot via:  
-  `https://<your-username>.github.io/<repo-name>/`
+  `https://snehadindi.github.io/Selah/`
 
 ---
 
