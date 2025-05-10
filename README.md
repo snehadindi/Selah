@@ -31,6 +31,7 @@ Selah/
 ├── index.html     # Home page
 ├── chatbot.html   # Core chatbot logic
 ├── about.html     # About page
+├── favicon.ico    #Tab logo
 └── README.md      # Project description
 ```
 ---
