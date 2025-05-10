@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+    body {
+      font-family: "Rethink Sans", sans-serif;
+      background: radial-gradient(circle at 30% 30%, #1e1b4b, #0f172a, #000);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+    }
+
+    .navbar {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 40px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      .nav-links a {
+  z-index: 10;
+  position: relative;
+}
+
+    }
+
+    .btn.about{
+      border: 1px solid white;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .hero-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.3), transparent 70%);
+      z-index: 0;
+      filter: blur(100px);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      background-color: #1c1c1c;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #cccccc;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn.primary {
+      background-color: white;
+      color: black;
+    }
+
+    .btn.secondary {
+      border: 1px solid white;
+      color: white;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .logos {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0.8;
+    }
+
+    .logos img {
+      max-height: 20px;
+    }
+    body {
+      transition: opacity 1s ease-in-out;
+    }
+
+    body.fade-out {
+      opacity: 0;
+    }
+    
+    
+
+    footer {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.6rem;
+}
+
+  </style>
+</head>
+<body style="opacity: 0;" onload="document.body.style.opacity='1'">
+
+  <header class="navbar">
+    <div class="logo">🌿 Selah</div>
+    <nav class="nav-links">
+      
+    </nav>
+  </header>
+  
+  <div class="hero-wrapper">
+  <section class="hero">
+    <span class="badge">⚡ Free, Always Here</span>
+    <h1>Where your thoughts are safe,<br/> and silence listens.</h1>
+    <p><em>"Selah: Calm, curated for you"</em></p>
+    <div class="hero-buttons">
+      <a href="chatbot" class="btn primary">Start Sharing →</a>
+      <a href="about" class="btn secondary">Know Selah</a>
+    </div>
+  </section>
+</div>
+<footer>© Sneha Dindi 2025</footer>
+
+<script>
+  document.querySelectorAll('a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 1000);
+      });
+    }
+  });
+</script>
+</body>
+</body>
+</html>
